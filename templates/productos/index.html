@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+<br>
+<a href="{{url_for('create')}}" class="btn btn-success">Ingresar nuevo producto</a>
+<br>
+<br>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Foto</th>
+                <th>Denominacion</th>
+                <th>Rubro</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto[0] }}</td>
+                    <td><img class="img-thumbnail" width="100" src="uploads/{{producto[4]}}" alt=""></td>
+                    <td>{{ producto[1] }}</td>
+                    <td>{{ producto[2] }}</td>
+                    <td>{{ producto[3] }}</td>
+                    <td> {{ producto[5] }}  </td><!-- calcular y pasar stock --> 
+                    <td>
+                        <a class="btn btn-warning" href="/compra/{{producto[0]}}">Compra</a> |
+                        <a class="btn btn-warning" href="/venta/{{producto[0]}}">Venta</a>
+                    </td>
+            
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include 'footer.html' %}

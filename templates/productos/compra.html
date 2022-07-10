@@ -1,0 +1,43 @@
+{% include 'header.html' %}
+{% for producto in productos %}
+<br>
+<div class="card">
+    <div class="card-header">
+        COMPRA DE PRODUCTOS
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos del producto</h5>
+        <p class="card-text">
+            <form method="post" action="/storeCompra" enctype="multipart/form-data">
+                <input type="hidden" value="{{ producto[0] }}" name="txtID" id="txtID">
+                <div class="form-group">
+                    <label for="txtDenominacion">Denominacion:</label>
+                    <a id="txtDenominacion" name="txtDenominacion" class="form-control" value="{{ producto[1] }}">{{ producto[1] }}</a>
+                </div>
+                <div class="form-group">
+                    <label for="txtRubro">Rubro:</label>
+                    <a id="txtRubro" class="form-control" >{{ producto[2] }}</a>
+                </div>
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripcion:</label>
+                    <a id="txtDescripcion" class="form-control" >{{ producto[3] }} </a>
+                </div>
+                <div class="form-group">
+                    <label for="txtFoto">Foto:</label>
+                    <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreFoto=producto[4])}}" alt="">
+                </div>
+                <div class="form-group">
+                    <label for="txtCantidad">Cantidad:</label>
+                    <input id="txtCantidad" class="form-control" type="text" name="txtCantidad">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Registrar">
+                    <a href="{{url_for('index')}}" class="btn btn-primary">Cancelar</a> 
+                </div>    
+            </form>
+        </p>
+    </div>
+</div>
+    
+{% endfor %}
+{% include 'footer.html' %}

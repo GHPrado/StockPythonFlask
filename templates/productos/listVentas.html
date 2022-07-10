@@ -1,0 +1,30 @@
+{% include 'header.html' %}
+<br>
+<a>Listado de VENTAS</a>
+<br>
+<br>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Foto</th>
+                <th>Denominacion</th>
+                <th>Rubro</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+                <tr>
+                    <td>{{ venta[0] }}</td>
+                    <td><img class="img-thumbnail" width="100" src="uploads/{{venta[1]}}" alt=""></td>
+                    <td>{{ venta[2] }}</td>
+                    <td>{{ venta[3] }}</td>
+                    <td>{{ venta[4] }}</td>
+                    <td> {{ -venta[5] }}  </td>            
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% include 'footer.html' %}
